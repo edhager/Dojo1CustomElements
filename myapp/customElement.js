@@ -8,18 +8,16 @@ define([], function () {
 			var nodes = document.getElementsByTagName('head');
 			if (nodes && nodes.length) {
 				headNode = nodes[0];
-			} else {
-				throw new Error('Could not find a <head> element.');
 			}
+		}
+
+		if (!headNode) {
+			throw new Error('Could not find a <head> element.');
 		}
 		return headNode;
 	}
 
 	return {
-		normalize: function(id, toAbsMid) {
-			return toAbsMid(id);
-		},
-
 		load: function(id, require, load){
 			var linkNode = document.createElement('link');
 			linkNode.rel = 'import';
